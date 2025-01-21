@@ -17,6 +17,7 @@
 import React, { useState } from "react";
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
+import "./App.css";
 
 function App() {
   const [tasks, setTasks] = useState([]); 
@@ -35,19 +36,21 @@ function App() {
     setEditTask(null); 
   };
 
-  // Delete a task
   const deleteTask = (id) => {
     const filteredTasks = tasks.filter((task) => task.id !== id);
     setTasks(filteredTasks);
   };
 
   return (
-    <div>
-      <h1>Task Management App</h1>
-      <TaskForm addTask={addTask} editTask={editTask} updateTask={updateTask} />
-      <TaskList tasks={tasks} setEditTask={setEditTask} deleteTask={deleteTask} />
+    <div className="app-container">
+      <h1 className="app-title">Task Management App</h1>
+      <div className="card">
+        <TaskForm addTask={addTask} editTask={editTask} updateTask={updateTask} />
+        <TaskList tasks={tasks} setEditTask={setEditTask} deleteTask={deleteTask} />
+      </div>
     </div>
   );
 }
+
 
 export default App;
